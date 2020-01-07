@@ -27,7 +27,7 @@ const AllieLogin = (props) => {
         axiosWithAuth()
             .post('/login', formData.credentials)
             .then(res => {
-                localStorage.setItem('token', res.data.payload)
+                localStorage.setItem('token', res.data.token)
                 // props.history.push('/')
             })
             .catch(err => console.log(err))
@@ -35,6 +35,7 @@ const AllieLogin = (props) => {
 
     return (
         <form onSubmit={login}>
+            <h1>Login Here!</h1>
             <input
                 type="text"
                 name="username"

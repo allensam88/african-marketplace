@@ -3,20 +3,40 @@ import axiosWithAuth from '../utils/axiosWithAuth';
 
 const EditUser = () => {
 
-    const id = 0;
+    const [user, setUser] = useState({
+        id: '',
+        username: ''
+    })
 
-    useEffect(() => {
+    const [fetching, isFetching] = useState(false)
+
+    const getUser = (id) => {
         axiosWithAuth()
-        .get(`/users`)
-        .then(res => console.log(res.data))
-    }, [])
+            .get(`/users/${id}`)
+            .then(res => setUser(res.data))
+    }
 
-    return <form>
-        <input
-            placeholder="Username" />
-        <input
-            placeholder="Password" />
-    </form>
+    const changeHandler = (e) => {
+        setUser({
+            ...user,
+            username: e.target.value
+        })
+    }
+
+    console.log("user", user)
+
+    return (
+        <form>
+            <input
+                placeholder={user.username}
+                name="username"
+                value={user.username}
+                onChange={changeHandler} />
+            <button>
+                Submit
+            </button>
+        </form>
+    )
 }
 
 export default EditUser;
