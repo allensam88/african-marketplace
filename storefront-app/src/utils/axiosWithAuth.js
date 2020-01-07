@@ -5,7 +5,8 @@ const axiosWithAuth = () => {
   return axios.create({
     baseURL: 'https://african-marketplace-1.herokuapp.com/api',
     headers: {
-      Authorization: token
+    'Content-Type': 'application/json',
+     'authorization': `${token}`
     }
   });
 };
