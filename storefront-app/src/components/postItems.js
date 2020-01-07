@@ -3,8 +3,8 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const Login = props => {
   const [user, setUser] = useState({
-    username: "Santa_Claus",
-    password: "merryXmas!"
+    username: " ",
+    password: " "
   });
 
   const handleChange = event => {
@@ -21,7 +21,7 @@ const Login = props => {
       .post('https://african-marketplace-1.herokuapp.com/api/items', user)
       .then(response => {
         localStorage.setItem("token", response.data.payload);
-        props.history.push("/");
+        props.history.push("/putitems");
       })
       .catch(error => console.log("Failed Login", error));
   };

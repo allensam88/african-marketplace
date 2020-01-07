@@ -5,7 +5,7 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 const ItemList = ({ items, updateItems }) => {
   console.log(items);
   const [newItems, setItems] = useState(false);
-  const [itemToEdit, setItemToEdit] = useState(initialColor);
+  const [itemToEdit, setItemToEdit] = useState([]);
 
   const editItems = items => {
     setItems(true);
