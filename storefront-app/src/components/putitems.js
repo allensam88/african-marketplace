@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { axiosWithAuth } from "../utils/axiosWithAuth";
+import axiosWithAuth from '../utils/axiosWithAuth';
 
 
 const ItemList = ({ items, updateItems }) => {
@@ -12,10 +12,10 @@ const ItemList = ({ items, updateItems }) => {
     setItemToEdit(items);
   };
 
-  const saveEdit = e => {
-    e.preventDefault();
+  const saveEdit = id => {
+    id.preventDefault();
     axiosWithAuth()
-      .put('https://african-marketplace-1.herokuapp.com/api/items/:id', itemToEdit)
+      .put(`/api/items/${id}`, itemToEdit)
       .then(response => {
         updateItems(
           items.map(item =>
@@ -27,9 +27,9 @@ const ItemList = ({ items, updateItems }) => {
       .catch(error => console.log("PUT failed", error));
   };
 
-  const deleteColor = item => {
+  const deleteColor = id => {
     axiosWithAuth()
-      .delete('https://african-marketplace-1.herokuapp.com/api/items/:id')
+      .delete(`/api/items/${id}`)
       .then(response => {
         updateItems(items.filter(item => item.id !== response.data));
       })
@@ -48,8 +48,7 @@ const ItemList = ({ items, updateItems }) => {
                 onClick={e => {
                   e.stopPropagation();
                   deleteColor(item);
-                }}
-              >
+                }}>
                 x
               </span>{" "}
               {item.item}
@@ -65,13 +64,12 @@ const ItemList = ({ items, updateItems }) => {
             item name:
             <input
               onChange={e =>
-                setItemoEdit({ ...itemToEdit, item: e.target.value })
+                setItemToEdit({ ...itemToEdit, item: e.target.value })
               }
               value={itemToEdit.item}
             />
           </label>
           <label>
-            hex code:
             <input
               onChange={e =>
                 setItemToEdit({
