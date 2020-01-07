@@ -1,4 +1,9 @@
-.App {
+html, body, #root, #App {
+  height: 100%;
+  width: 100%;
+}
+
+#App {
   text-align: center;
 }
 
@@ -38,7 +43,7 @@
 }
 
 body {
-  background-color: black;
+ background-color: black;
 }
 
 form {
@@ -47,7 +52,7 @@ form {
   justify-content: center;
   align-items: center;
   width: 20%;
-  height: 21rem;
+  height: 25rem;
   border-radius: 10px;
   margin: 0 auto;
   background-color: white;
@@ -60,6 +65,7 @@ fieldset {
   align-items: center;
   width: 75%;
   height: 10rem;
+  margin-bottom: 10px;
   background-color: white;
   border: 1px solid #fe6c61;
 }
@@ -69,19 +75,43 @@ input {
 }
 
 label {
-  margin: 10px;
+  margin: 12px;
 }
 
 button {
-  height: 30px;
+  height: 35px;
   width: 85%;
   border-radius: 5px;
-  margin: 7px;
+  margin: 4px;
   background-color: #fe6c61;
+  font-weight: bold;
+  font-size: .875rem;
 }
 
 img {
   width: 3rem;
   height: 4rem;
   margin: 1rem;
+}
+
+input::placeholder {
+  text-align: center;
+}
+
+legend {
+  font-weight: bold;
+}
+
+.form-button {
+  width: 100%;
+}
+
+
+
+#auth-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

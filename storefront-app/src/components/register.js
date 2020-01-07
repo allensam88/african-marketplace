@@ -3,7 +3,7 @@ import axios from 'axios';
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
-const LoginForm = props => {
+const RegisterForm = props => {
     let history = useHistory();
 
     const [user, setUser] = useState({
@@ -20,15 +20,15 @@ const LoginForm = props => {
     };
     const submitForm = event => {
         event.preventDefault()
-        axios.post('https://african-marketplace-1.herokuapp.com/api/login', {
+        axios.post('https://african-marketplace-1.herokuapp.com/api/register', {
             username: user.username,
             password: user.password
-          }).then(function (response) {
-            axios.defaults.headers.common.authorization = response.data.token;
-            localStorage.setItem('auth-token', response.data.token);
-            console.log(response.data.token);
-            history.push("/items");
-          }).catch(function (error) {
+          })
+          .then(function (response) {
+            console.log(response);
+            history.push("/auth/login");
+          })
+          .catch(function (error) {
             console.log(error);
           });
     };
@@ -37,7 +37,7 @@ const LoginForm = props => {
         <form onSubmit={submitForm}>
             <img src={require('./logo.png')} />
             <fieldset>
-            <legend>Login</legend>
+            <legend>Create Account</legend>
                     <label htmlFor = "username">Username</label>
                     <input id="username"
                     type="text"
@@ -53,14 +53,14 @@ const LoginForm = props => {
                     onChange={handleChanges}
                     value={user.password}/>
             </fieldset>
-            <button type="submit">Login</button>
-            <Link className="form-button" to="/auth/register">
+            <button type="submit">Create Account</button>
+            <Link className="form-button" to="/auth/login">
                 <button renderas="button">
-                    Need an account?
+                    Already have an Account?
                 </button>
             </Link>
         </form>
     )
 };
 
-export default LoginForm;
+export default RegisterForm;
