@@ -10,9 +10,9 @@ const EditUser = () => {
 
     const [fetching, isFetching] = useState(false)
 
-    const getUser = (id) => {
+    const getUser = () => {
         axiosWithAuth()
-            .get(`/users/${id}`)
+            .get(`/users/${user.id}`)
             .then(res => setUser(res.data))
     }
 
@@ -25,10 +25,12 @@ const EditUser = () => {
 
     console.log("user", user)
 
-    return (
+    return (<>
+        <h2>Edit Username</h2>
+
         <form>
             <input
-                placeholder={user.username}
+                placeholder="Username"
                 name="username"
                 value={user.username}
                 onChange={changeHandler} />
@@ -36,7 +38,7 @@ const EditUser = () => {
                 Submit
             </button>
         </form>
-    )
+    </>)
 }
 
 export default EditUser;

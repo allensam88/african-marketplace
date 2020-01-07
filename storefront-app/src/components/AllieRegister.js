@@ -21,7 +21,7 @@ const AllieRegister = ({ history }) => {
         .post('/register', user)
         .then(response => {
           localStorage.setItem('user', JSON.stringify(response.data));
-          // history.push('/upload-page/1');
+          history.push('/login');
           document.location.reload();
         })
         .catch(err => console.log(err.response));
@@ -36,7 +36,7 @@ const AllieRegister = ({ history }) => {
 
   return (
     <main className="wrapper">
-      <h1>Register Here!</h1>
+      <h2>Register</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="username" className="input-container">
           <i className="far fa-user icon" />
@@ -60,11 +60,9 @@ const AllieRegister = ({ history }) => {
             placeholder="Password"
           />
         </label>
-        <div className="login-buttons">
           <button className="registerButton" type="submit">
           Register
           </button>
-        </div>
       </form>
     </main>
   );

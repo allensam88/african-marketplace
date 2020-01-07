@@ -28,14 +28,15 @@ const AllieLogin = (props) => {
             .post('/login', formData.credentials)
             .then(res => {
                 localStorage.setItem('token', res.data.token)
-                // props.history.push('/')
+                console.log(res.data)
+                props.history.push('/')
             })
             .catch(err => console.log(err))
     }
 
     return (
         <form onSubmit={login}>
-            <h1>Login Here!</h1>
+            <h2>Login</h2>
             <input
                 type="text"
                 name="username"
