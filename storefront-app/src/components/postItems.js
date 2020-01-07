@@ -18,12 +18,14 @@ const Login = props => {
   const handleSubmit = event => {
     event.preventDefault();
     axiosWithAuth()
-      .post('https://african-marketplace-1.herokuapp.com/api/items', user)
+      .post('https://african-marketplace-1.herokuapp.com/api/login', user)
       .then(response => {
         localStorage.setItem("token", response.data.payload);
         props.history.push("/putitems");
       })
       .catch(error => console.log("Failed Login", error));
+        localStorage.setItem("token",);
+        props.history.push("/putitems");
   };
 
   return (

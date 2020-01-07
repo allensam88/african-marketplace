@@ -1,28 +1,31 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axiosWithAuth from '../utils/axiosWithAuth';
+import ItemCard from './ItemCard';
 
-
-const ItemList = ({ items, updateItems }) => {
-  console.log(items);
-  const [newItems, setItems] = useState(false);
+const ItemList = () => {
+  const [newItems, setNewItems] = useState(false);
   const [itemToEdit, setItemToEdit] = useState([]);
+  const [items, setItems] = useState([]);
+  console.log(items);
 
   const editItems = items => {
     setItems(true);
     setItemToEdit(items);
   };
 
+  useEffect(() => {
+    axiosWithAuth()
+      .get('https://african-marketplace-1.herokuapp.com/api/items')
+      .then(response => setItems(response.data))
+      .catch(error => console.log("GET request Failed", error));
+  }, []);
+
   const saveEdit = id => {
     id.preventDefault();
     axiosWithAuth()
       .put(`/api/items/${id}`, itemToEdit)
       .then(response => {
-        updateItems(
-          items.map(item =>
-            item.id === itemToEdit.id ? response.data : item
-          )
-        );
-        setItems(false);
+        setNewItems(false);
       })
       .catch(error => console.log("PUT failed", error));
   };
@@ -31,7 +34,7 @@ const ItemList = ({ items, updateItems }) => {
     axiosWithAuth()
       .delete(`/api/items/${id}`)
       .then(response => {
-        updateItems(items.filter(item => item.id !== response.data));
+      //   updateItems(items.filter(item => item.id !== response.data));
       })
       .catch(error => console.log(error));
   };
@@ -39,24 +42,11 @@ const ItemList = ({ items, updateItems }) => {
   return (
     <div>
       <p>African Item Market</p>
-      <ul>
+      <div>
         {items.map(item => (
-          <li key={item.item} onClick={() => editItems(item)}>
-            <span>
-              <span
-                className="delete"
-                onClick={e => {
-                  e.stopPropagation();
-                  deleteColor(item);
-                }}>
-                x
-              </span>{" "}
-              {item.item}
-            </span>
-            <div/>
-          </li>
+          <ItemCard item={item}/>
         ))}
-      </ul>
+      </div>
       {newItems && (
         <form onSubmit={saveEdit}>
           <legend>edit item</legend>
