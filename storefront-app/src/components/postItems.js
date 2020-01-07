@@ -3,8 +3,8 @@ import { axiosWithAuth } from "../utils/axiosWithAuth";
 
 const Login = props => {
   const [user, setUser] = useState({
-    username: "",
-    password: ""
+    username: "Santa_Claus",
+    password: "merryXmas!"
   });
 
   const handleChange = event => {
