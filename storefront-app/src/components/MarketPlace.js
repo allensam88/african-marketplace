@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axiosWithAuth from '../utils/axiosWithAuth';
 import ItemCard from './ItemCard';
 import EditCard from './EditCard';
-
+import {Route}from 'react-router-dom';
 
 const ItemList = () => {
   const [editItem, setEditItem] = useState(false);
@@ -36,7 +36,7 @@ const ItemList = () => {
     axiosWithAuth()
       .delete(`/api/items/${id}`)
       .then(response => {
-      //   updateItems(items.filter(item => item.id !== response.data));
+        editItem(items.filter(item => item.id !== response.data));
       })
       .catch(error => console.log(error));
   };
@@ -45,11 +45,16 @@ const ItemList = () => {
     <div>
       <p>African Item Market</p>
       <div>
+        <Route to="/marketplace"/>
         {items.map(item => ( 
         <ItemCard item={item} editItems={editItems}/>))}
       </div>
+      <Route to="/editcard"/>
       <EditCard setItemToEdit={setItemToEdit} editItem={editItem} itemToEdit={itemToEdit} saveEdit={saveEdit} setItems={setItems}/>
       <div/>
+      <div>
+      <button onClick={deleteColor}>Delete</button>
+      </div>
     </div>
   );
 };
