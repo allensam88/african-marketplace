@@ -115,3 +115,13 @@ legend {
   margin-left: 80rem;
   margin-top: 2rem;
 }
+
+img {
+  width: 4.5rem;
+  height: 6rem;
+}
+
+.MuiCardActions-root {
+  display: flex;
+  justify-content: center;
+}

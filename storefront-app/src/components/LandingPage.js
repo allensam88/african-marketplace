@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import ItemCard from "./ItemCard";
 import axiosWithAuth from '../utils/axiosWithAuth';
 import SearchForm from './Search';
+import { Link } from 'react-router-dom';
 import Logout from './Logout';
 
 const axios = axiosWithAuth();
@@ -27,7 +28,7 @@ export default function ItemList() {
         <section className="item-list">
             <Logout/>
             {filteredData.map(char => {
-                return <ItemCard key={char.id} item={char} />;
+                    return <ItemCard key={char.id} item={char} />
             })}
         </section>
     );
