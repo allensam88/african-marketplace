@@ -40,7 +40,7 @@ const RegisterForm = props => {
     return(
         <AuthContainer>
             <form onSubmit={submitForm}>
-                <img src={require('./logo.png')} />
+                <img className="logo" src={require('./logo.png')} />
                 <fieldset>
                     <legend>Create Account</legend>
                     <label htmlFor = "username">Username</label>

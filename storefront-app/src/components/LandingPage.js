@@ -26,9 +26,12 @@ export default function ItemList() {
 
     return(
         <section className="item-list">
+            <div className="nav-section">
+                <h1>buy items</h1>
+            </div>
             <Logout/>
             {filteredData.map(char => {
-                    return <ItemCard key={char.id} item={char} />
+                    return <ItemCard key={items.name} item={items} />
             })}
         </section>
     );
