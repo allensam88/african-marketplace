@@ -23,7 +23,7 @@ export default function MediaCard(props) {
   return (
     <Card className={classes.card}>
       <CardActionArea>
-      <img src={require('./logo.png')} />
+      <img className="logo" src={require('./logo.png')} />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
           {props.item.name}
