@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axiosWithAuth from '../utils/axiosWithAuth';
-import ItemCard from './ItemCard';
+import CardItem from './CardItem';
 import EditCard from './EditCard';
 import {Route}from 'react-router-dom';
 
@@ -48,7 +48,7 @@ const ItemList = () => {
       <div>
         <Route to="/marketplace"/>
         {items.map(item => ( 
-        <ItemCard item={item} editItems={editItems} deleteItem={deleteItem} saveEdit={saveEdit}/>))}
+        <CardItem item={item} editItems={editItems} deleteItem={deleteItem} saveEdit={saveEdit}/>))}
       </div>
       <Route to="/editcard"/>
       <EditCard setItemToEdit={setItemToEdit} editItem={editItem} itemToEdit={itemToEdit} saveEdit={saveEdit} setItems={setItems}/>

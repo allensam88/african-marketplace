@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ItemCard = ({item, editItems, deleteItem, saveEdit}) => {
+const CardItem = ({item, editItems, deleteItem, saveEdit}) => {
 console.log(item);
 
     return(
@@ -22,4 +22,4 @@ console.log(item);
 
 
 }
-export default ItemCard;
+export default CardItem;
