@@ -71,7 +71,7 @@ const Login = props => {
           value={user.location}
           onChange={handleChange}
         />
-        <button type="submit">Log In</button>
+        <button type="submit">Add</button>
       </form>
     </div>
   );

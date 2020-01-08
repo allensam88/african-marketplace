@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import axiosWithAuth from '../utils/axiosWithAuth';
 import ItemCard from './ItemCard';
+import EditCard from './EditCard';
+
 
 const ItemList = () => {
-  const [newItems, setNewItems] = useState(false);
-  const [itemToEdit, setItemToEdit] = useState([]);
+  const [editItem, setEditItem] = useState(false);
+  const [itemToEdit, setItemToEdit] = useState();
   const [items, setItems] = useState([]);
-  console.log(items);
+
 
   const editItems = items => {
-    setItems(true);
+    setEditItem(true);
     setItemToEdit(items);
   };
 
@@ -25,7 +27,7 @@ const ItemList = () => {
     axiosWithAuth()
       .put(`/api/items/${id}`, itemToEdit)
       .then(response => {
-        setNewItems(false);
+        setEditItem(false);
       })
       .catch(error => console.log("PUT failed", error));
   };
@@ -43,39 +45,10 @@ const ItemList = () => {
     <div>
       <p>African Item Market</p>
       <div>
-        {items.map(item => (
-          <ItemCard item={item}/>
-        ))}
+        {items.map(item => ( 
+        <ItemCard item={item} editItems={editItems}/>))}
       </div>
-      {newItems && (
-        <form onSubmit={saveEdit}>
-          <legend>edit item</legend>
-          <label>
-            item name:
-            <input
-              onChange={e =>
-                setItemToEdit({ ...itemToEdit, item: e.target.value })
-              }
-              value={itemToEdit.item}
-            />
-          </label>
-          <label>
-            <input
-              onChange={e =>
-                setItemToEdit({
-                  ...itemToEdit,
-                  code: { hex: e.target.value }
-                })
-              }
-              value={itemToEdit.code.hex}
-            />
-          </label>
-          <div>
-            <button type="submit">save</button>
-            <button onClick={() => setItems(false)}>cancel</button>
-          </div>
-        </form>
-      )}
+      <EditCard setItemToEdit={setItemToEdit} editItem={editItem} itemToEdit={itemToEdit} saveEdit={saveEdit} setItems={setItems}/>
       <div/>
     </div>
   );
