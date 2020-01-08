@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import axios from 'axios';
+import axiosWithAuth from '../utils/axiosWithAuth';
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import StyledButton from "./Button";
+
+const axios = axiosWithAuth();
 
 const RegisterForm = props => {
     let history = useHistory();
@@ -53,11 +56,11 @@ const RegisterForm = props => {
                     onChange={handleChanges}
                     value={user.password}/>
             </fieldset>
-            <button type="submit">Create Account</button>
+            <StyledButton type="submit">Create Account</StyledButton>
             <Link className="form-button" to="/auth/login">
-                <button renderas="button">
+                <StyledButton renderas="button">
                     Already have an Account?
-                </button>
+                </StyledButton>
             </Link>
         </form>
     )

@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import ItemCard from "./ItemCard";
-import axios from "axios";
+import axiosWithAuth from '../utils/axiosWithAuth';
+
+const axios = axiosWithAuth();
 
 export default function ItemList() {
-
-    const [items, setItems] = useState([]);
     const [filteredData, updateData] = useState([]);
 
     const search = charArr => {
@@ -14,11 +13,10 @@ export default function ItemList() {
     };
 
     useEffect(() => {
-        axios.get("https://african-marketplace-1.herokuapp.com/api/users/:id/items")
+        axios.get("https://african-marketplace-1.herokuapp.com/api/items")
         .then(response => {
-            console.log(response.data.results);
-            setItems(response.data.results);
-            updateData(response.data.results);
+            console.log(response.data);
+            updateData(response.data);
         });
     }, []);
 
