@@ -1,16 +1,16 @@
 import React from 'react';
 import { Route, Redirect } from 'react-router-dom';
 
-const PrivateRoute = ({ component: Component, ...rest }) => (
+const AuthRoute = ({ component: Component, ...rest }) => (
   <Route
     {...rest}
     render={props => {
-      return localStorage.getItem('auth-token') ? (
+      return !localStorage.getItem('auth-token') ? (
         <Component {...props} />
       ) : (
         <Redirect
           to={{
-            pathname: '/auth/login',
+            pathname: '/items',
             state: { from: props.location },
           }}
         />
@@ -19,4 +19,4 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
   />
 );
 
-export default PrivateRoute;
+export default AuthRoute;

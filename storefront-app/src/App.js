@@ -1,18 +1,33 @@
 import React from 'react';
+import { BrowserRouter as Router, Route, Switch, Redirect } from "react-router-dom";
 import EditUser from './components/EditUser';
-import AllieLogin from './components/AllieLogin';
-import AllieRegister from './components/AllieRegister';
 import PrivateRoute from './utils/PrivateRoute';
-import { Route } from 'react-router-dom';
+import AuthRoute from './utils/AuthRoute';
 import './App.css';
+import LoginForm from './components/Login';
+import RegisterForm from './components/Register';
+import ItemList from './components/LandingPage';
 
 function App() {
   return (
-    <div className="App">
-      <h1>App deployed!</h1>
-      <PrivateRoute path="/users/:id" component={EditUser} /> 
-      <Route exact path="/login" component={AllieLogin} />
-      <Route exact path="/register" component={AllieRegister} />
+    <div id="App">
+      <Switch>
+        <AuthRoute path="/auth" component={() => (
+          <Switch>
+            <Route path="/auth/login" exact>
+              <LoginForm/>
+            </Route>
+            <Route path="/auth/register" exact>
+              <RegisterForm/>
+            </Route>
+            <Redirect to="/auth/login" />
+          </Switch>
+        )}>
+        </AuthRoute>
+        <PrivateRoute path="/users/:id" component={EditUser} /> 
+        <PrivateRoute path="/items" component={ItemList} />
+        <Redirect to="/auth/login" />
+      </Switch>
     </div>
   );
 }
