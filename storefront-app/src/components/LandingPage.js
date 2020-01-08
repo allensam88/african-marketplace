@@ -1,10 +1,13 @@
 import React, { useEffect, useState } from "react";
 import ItemCard from "./ItemCard";
 import axiosWithAuth from '../utils/axiosWithAuth';
+import SearchForm from './Search';
+import Logout from './Logout';
 
 const axios = axiosWithAuth();
 
 export default function ItemList() {
+    const [items, setItems] = useState([]);
     const [filteredData, updateData] = useState([]);
 
     const search = charArr => {
@@ -22,7 +25,7 @@ export default function ItemList() {
 
     return(
         <section className="item-list">
-            <h2>item list</h2>
+            <Logout/>
             {filteredData.map(char => {
                 return <ItemCard key={char.id} item={char} />;
             })}

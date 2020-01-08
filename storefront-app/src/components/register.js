@@ -3,6 +3,7 @@ import axiosWithAuth from '../utils/axiosWithAuth';
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import StyledButton from "./Button";
+import AuthContainer from "./AuthContainer";
 
 const axios = axiosWithAuth();
 
@@ -37,10 +38,11 @@ const RegisterForm = props => {
     };
 
     return(
-        <form onSubmit={submitForm}>
-            <img src={require('./logo.png')} />
-            <fieldset>
-            <legend>Create Account</legend>
+        <AuthContainer>
+            <form onSubmit={submitForm}>
+                <img src={require('./logo.png')} />
+                <fieldset>
+                    <legend>Create Account</legend>
                     <label htmlFor = "username">Username</label>
                     <input id="username"
                     type="text"
@@ -55,14 +57,15 @@ const RegisterForm = props => {
                     placeholder="Enter Password"
                     onChange={handleChanges}
                     value={user.password}/>
-            </fieldset>
-            <StyledButton type="submit">Create Account</StyledButton>
-            <Link className="form-button" to="/auth/login">
-                <StyledButton renderas="button">
+                </fieldset>
+                <StyledButton type="submit">Create Account</StyledButton>
+                    <Link className="form-button" to="/auth/login">
+                    <StyledButton renderas="button">
                     Already have an Account?
                 </StyledButton>
-            </Link>
-        </form>
+                </Link>
+            </form>
+        </AuthContainer>
     )
 };
 
