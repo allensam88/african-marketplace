@@ -28,8 +28,7 @@ const AllieLogin = (props) => {
             .post('/login', formData.credentials)
             .then(res => {
                 localStorage.setItem('token', res.data.token)
-                console.log(res.data)
-                props.history.push('/')
+                props.history.push(`/users/${res.data.id}`)
             })
             .catch(err => console.log(err))
     }
