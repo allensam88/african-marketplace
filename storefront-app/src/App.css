@@ -46,7 +46,7 @@ html, body, #root, #App {
   }
 }
 
-form {
+.login-form {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -70,15 +70,15 @@ fieldset {
   border: 1px solid #fe6c61;
 }
 
-input {
+.login-input {
   margin: 0 auto;
 }
 
-label {
+.login-label {
   margin: 12px;
 }
 
-input::placeholder {
+.login-input::placeholder {
   text-align: center;
 }
 
