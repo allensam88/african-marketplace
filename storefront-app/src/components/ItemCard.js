@@ -18,15 +18,12 @@ const useStyles = makeStyles({
 });
 
 export default function MediaCard(props) {
-  const classes = useStyles();
+    const classes = useStyles();
+    
   return (
     <Card className={classes.card}>
       <CardActionArea>
-        <CardMedia
-          className={classes.media}
-          image="./buy.png"
-          title="Contemplative Reptile"
-        />
+      <img src={require('./logo.png')} />
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
           {props.item.name}
