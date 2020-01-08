@@ -3,14 +3,10 @@ import axiosWithAuth from '../utils/axiosWithAuth';
 
 const EditUser = (props) => {
 
-    console.log("props", props)
-
     const [user, setUser] = useState({
         id: '',
         username: ''
     })
-
-    const [fetching, isFetching] = useState(false)
 
     const getUser = () => {
         axiosWithAuth()
@@ -34,10 +30,15 @@ const EditUser = (props) => {
         e.preventDefault();
         axiosWithAuth()
             .put(`/users/${props.match.params.id}`, user)
-            .then(console.log("submitForm fired", user))
     }
 
-    console.log("user", user)
+    const deleteUser = (e) => {
+        e.preventDefault();
+        console.log("deleted");
+        axiosWithAuth()
+        .delete(`/users/${props.match.params.id}`);
+        props.history.push('/login');
+    }
 
     return (<>
         <h2>Edit Username</h2>
@@ -48,8 +49,11 @@ const EditUser = (props) => {
                 name="username"
                 value={user.username}
                 onChange={changeHandler} />
-            <button>
+            <button type="submit">
                 Submit
+            </button>
+            <button onClick={deleteUser} type="button">
+                Delete
             </button>
         </form>
     </>)
