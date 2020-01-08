@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axiosWithAuth from '../utils/axiosWithAuth';
 
-const Login = props => {
+const PostItems= props => {
   const [user, setUser] = useState({
     name: " ",
     descipition: " ",
@@ -77,4 +77,4 @@ const Login = props => {
   );
 };
 
-export default Login;
+export default PostItems;

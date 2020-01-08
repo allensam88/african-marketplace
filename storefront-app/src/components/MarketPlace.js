@@ -6,7 +6,7 @@ import {Route}from 'react-router-dom';
 
 const ItemList = () => {
   const [editItem, setEditItem] = useState(false);
-  const [itemToEdit, setItemToEdit] = useState();
+  const [itemToEdit, setItemToEdit] = useState([]);
   const [items, setItems] = useState([]);
 
 
@@ -23,9 +23,9 @@ const ItemList = () => {
   }, []);
 
   const saveEdit = id => {
-    id.preventDefault();
+    // id.preventDefault();
     axiosWithAuth()
-      .put(`/api/items/${id}`, itemToEdit)
+      .put(`/items/${id}`, itemToEdit)
       .then(response => {
         setEditItem(false);
       })
@@ -48,7 +48,7 @@ const ItemList = () => {
       <div>
         <Route to="/marketplace"/>
         {items.map(item => ( 
-        <ItemCard item={item} editItems={editItems} deleteItem={deleteItem}/>))}
+        <ItemCard item={item} editItems={editItems} deleteItem={deleteItem} saveEdit={saveEdit}/>))}
       </div>
       <Route to="/editcard"/>
       <EditCard setItemToEdit={setItemToEdit} editItem={editItem} itemToEdit={itemToEdit} saveEdit={saveEdit} setItems={setItems}/>
