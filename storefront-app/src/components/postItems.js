@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import axiosWithAuth from '../utils/axiosWithAuth';
 
-const PostItems= props => {
+const PostItems = props => {
   const [user, setUser] = useState({
-    name: " ",
-    descipition: " ",
-    price: " ",
-    category: " ",
-    location: " "
+    name: "",
+    description: "",
+    price: "",
+    category: "",
+    location: "",
+    user_id: `${localStorage.getItem('id')}`
   });
 
   const handleChange = event => {
@@ -17,16 +18,18 @@ const PostItems= props => {
     });
   };
 
+  console.log("user", user)
+
   const handleSubmit = event => {
     event.preventDefault();
     axiosWithAuth()
-      .post('https://african-marketplace-1.herokuapp.com/api/items', user)
+      .post('/items', user)
       .then(response => {
-          localStorage.setItem('token', response.data.token)
-          props.history.push(`/MarketPlace/${response.data.id}`)
+        console.log("response", response)
+        props.history.push(`/MarketPlace/${response.data.id}`)
       })
       .catch(err => console.log(err))
-}
+  }
   return (
     <div>
       <h1>Welcome to the African Market App!</h1>
@@ -47,7 +50,7 @@ const PostItems= props => {
           value={user.description}
           onChange={handleChange}
         />
-         <label>Price</label>
+        <label>Price</label>
         <input
           type="text"
           name="price"
@@ -63,7 +66,7 @@ const PostItems= props => {
           value={user.category}
           onChange={handleChange}
         />
-         <label>Location</label>
+        <label>Location</label>
         <input
           type="text"
           name="location"

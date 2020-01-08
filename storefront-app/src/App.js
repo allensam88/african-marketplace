@@ -6,27 +6,22 @@ import AuthRoute from './utils/AuthRoute';
 import LoginForm from './components/Login';
 import RegisterForm from './components/Register';
 import ItemList from './components/LandingPage';
+import PostItems from './components/postItems';
+import MarketPlace from './components/MarketPlace'; 
+
 import './App.css';
 
 function App() {
   return (
     <div id="App">
       <Switch>
-        <AuthRoute path="/auth" component={() => (
-          <Switch>
-            <Route path="/auth/login" exact>
-              <LoginForm/>
-            </Route>
-            <Route path="/auth/register" exact>
-              <RegisterForm/>
-            </Route>
-            <Redirect to="/auth/login" />
-          </Switch>
-        )}>
-        </AuthRoute>
         <PrivateRoute path="/users/:id" component={EditUser} /> 
-        <PrivateRoute path="/items" component={ItemList} />
-        <Redirect to="/auth/login" />
+        <Route exact path="/" component={ItemList} />
+        <Route exact path="/login" component={LoginForm} />
+        <Route exact path="/register" component={RegisterForm} />
+        <Route path="/postItems" component={PostItems}/>
+        <Route path="/MarketPlace" component={MarketPlace}/>
+        <Redirect to="/login" component={LoginForm} />
       </Switch>
     </div>
   );
