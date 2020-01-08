@@ -34,7 +34,7 @@ const Login = props => {
         <label>Name</label>
         <input
           type="text"
-          name="Name"
+          name="name"
           placeholder="Name"
           value={user.name}
           onChange={handleChange}

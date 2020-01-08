@@ -32,9 +32,10 @@ const ItemList = () => {
       .catch(error => console.log("PUT failed", error));
   };
 
-  const deleteColor = id => {
-    axiosWithAuth()
-      .delete(`/api/items/${id}`)
+  const deleteItem = id => {
+    console.log("delete", id);
+    axiosWithAuth('helper')
+      .delete(`/items/${id}`)
       .then(response => {
         editItem(items.filter(item => item.id !== response.data));
       })
@@ -47,14 +48,11 @@ const ItemList = () => {
       <div>
         <Route to="/marketplace"/>
         {items.map(item => ( 
-        <ItemCard item={item} editItems={editItems}/>))}
+        <ItemCard item={item} editItems={editItems} deleteItem={deleteItem}/>))}
       </div>
       <Route to="/editcard"/>
       <EditCard setItemToEdit={setItemToEdit} editItem={editItem} itemToEdit={itemToEdit} saveEdit={saveEdit} setItems={setItems}/>
       <div/>
-      <div>
-      <button onClick={deleteColor}>Delete</button>
-      </div>
     </div>
   );
 };
