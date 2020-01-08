@@ -90,10 +90,10 @@ legend {
   width: 100%;
 }
 
-.makeStyles-card-1 {
+.makeStyles-card-1{
   margin: 2rem;
   width: 30rem;
-  height: 18rem;
+  height: 25rem;
 }
 
 .item-list {
@@ -101,13 +101,12 @@ legend {
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  height: 100%;
+  height: 50rem;
 }
 
 .log-out {
-  width: 5rem;
-  height:2rem;
-  margin-left: 80rem;
+  width: 10rem;
+  height:1.5rem;
   margin-top: 2rem;
 }
 
@@ -116,11 +115,34 @@ legend {
   height: 6rem;
 }
 
-.MuiCardActions-root {
+.MuiCardMedia-root {
   display: flex;
   justify-content: center;
+  height: 15rem;
 }
 
 .nav-section {
+  display: flex;
+  justify-content: space-evenly;
   width: 100%;
+  height: 5rem;
 }
+
+.search-form {
+  display: flex;
+  flex-direction: row;
+  margin-top: 2rem;
+  height: 2rem;
+  width: 15rem;
+}
+
+.search-button {
+  background-color: #fe6c61;
+  border-radius: 8px;
+}
+
+.item-img {
+  width: 100%;
+  height: 15rem;
+}
+
