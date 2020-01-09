@@ -174,4 +174,28 @@ width: 35vw;
   height: 5rem;
 }
 
+.profile-img {
+  width: 100px;
+  margin-top: 1%;
+}
 
+ul {
+  text-align: left;
+}
+
+li {
+  list-style-type: none;
+}
+
+.user-item {
+  width: 25%;
+  max-width: 270px;
+  min-width: 200px;
+  border: 1px solid black;
+}
+
+.user-item-wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 1%;
+}

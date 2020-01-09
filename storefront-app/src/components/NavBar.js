@@ -17,7 +17,7 @@ width: 100%;
 const NavBar = () => {
     return (
         <NavBarStyles>
-            <div className="marketplace-logo"> <img className="marketplace-logo" src={require('./marketplace.png')} /></div>
+            <div className="marketplace-logo"> <img className="marketplace-logo" alt="logo" src={require('./marketplace.png')} /></div>
 
             <ul className="nav-links">
                 <li>

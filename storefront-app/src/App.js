@@ -17,13 +17,13 @@ function App() {
     <div id="App">
       <NavBar/>
       <Switch>
-        <PrivateRoute exact path="/userprofile/:id" component={UserPage} />
+        <PrivateRoute path="/userprofile/:id" component={UserPage} />
         <PrivateRoute path="/users/:id" component={EditUser} /> 
         <Route exact path="/" component={ItemList} />
         <Route exact path="/login" component={LoginForm} />
         <Route exact path="/register" component={RegisterForm} />
-        <Route path="/postItems" component={PostItems}/>
-        <Route path="/MarketPlace" component={MarketPlace}/>
+        <Route path="/postItems" component={PostItems} />
+        <Route path="/MarketPlace" component={MarketPlace} />
         <Redirect to="/login" component={LoginForm} />
       </Switch>
     </div>
