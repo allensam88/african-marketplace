@@ -20,24 +20,22 @@ const RegisterForm = props => {
             ...user,
             [event.target.name]: event.target.value
         });
-        console.log(event.target.value);
     };
     const submitForm = event => {
         event.preventDefault()
         axios.post('https://african-marketplace-1.herokuapp.com/api/register', {
             username: user.username,
             password: user.password
-          })
-          .then(function (response) {
-            console.log(response);
-            history.push("/auth/login");
-          })
-          .catch(function (error) {
-            console.log(error);
-          });
+        })
+            .then(function (response) {
+                history.push("/auth/login");
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
     };
 
-    return(
+    return (
         <AuthContainer>
             <form className="login-form" onSubmit={submitForm}>
                 <img className="logo" src={require('./logo.png')} />
@@ -59,9 +57,9 @@ const RegisterForm = props => {
                     value={user.password}/>
                 </fieldset>
                 <StyledButton type="submit">Create Account</StyledButton>
-                    <Link className="form-button" to="/auth/login">
+                <Link className="form-button" to="/auth/login">
                     <StyledButton renderas="button">
-                    Already have an Account?
+                        Already have an Account?
                 </StyledButton>
                 </Link>
             </form>

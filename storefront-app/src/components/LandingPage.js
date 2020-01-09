@@ -28,8 +28,9 @@ export default function ItemList() {
             <div className="search-section">  
             </div>
             {filteredData.map(item => {
-                    return <MediaCard key={items.name} item={item} />
+                    return <MediaCard key={item.id} item={item} />
             })}
+            <Logout/>
         </section>
     );
 }
