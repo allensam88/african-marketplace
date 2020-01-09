@@ -1,20 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import axiosWithAuth from '../utils/axiosWithAuth';
 
-const EditUser = () => {
+const EditUser = (props) => {
 
     const [user, setUser] = useState({
         id: '',
         username: ''
     })
 
-    const [fetching, isFetching] = useState(false)
-
     const getUser = () => {
         axiosWithAuth()
-            .get(`/users/${user.id}`)
+            .get(`/users/${props.match.params.id}`)
             .then(res => setUser(res.data))
     }
+
+    useEffect(() => {
+        getUser()
+    }, [])
+
 
     const changeHandler = (e) => {
         setUser({
@@ -23,19 +26,34 @@ const EditUser = () => {
         })
     }
 
-    console.log("user", user)
+    const submitForm = (e) => {
+        e.preventDefault();
+        axiosWithAuth()
+            .put(`/users/${props.match.params.id}`, user)
+    }
+
+    const deleteUser = (e) => {
+        e.preventDefault();
+        console.log("deleted");
+        axiosWithAuth()
+        .delete(`/users/${props.match.params.id}`);
+        props.history.push('/login');
+    }
 
     return (<>
         <h2>Edit Username</h2>
-
-        <form>
+        <p>Current username: {user.username}</p>
+        <form onSubmit={submitForm}>
             <input
                 placeholder="Username"
                 name="username"
                 value={user.username}
                 onChange={changeHandler} />
-            <button>
+            <button type="submit">
                 Submit
+            </button>
+            <button onClick={deleteUser} type="button">
+                Delete
             </button>
         </form>
     </>)
