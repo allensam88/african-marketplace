@@ -7,12 +7,12 @@ import { Link } from 'react-router-dom';
 const axios = axiosWithAuth();
 
 export default function ItemList() {
-    const [items, setItems] = useState([]);
-    const [filteredData, updateData] = useState([]);
+    const [items, updateData] = useState([]);
+    const [filteredData, setFilteredData] = useState([]);
 
     const search = charArr => {
         console.warn(charArr, 'charArr update');
-        updateData(charArr)
+        setFilteredData(charArr)
     };
 
     useEffect(() => {
@@ -20,17 +20,18 @@ export default function ItemList() {
         .then(response => {
             console.log(response.data);
             updateData(response.data);
+            setFilteredData(response.data);
         });
     }, []);
 
     return(
         <section className="item-list">
-            <div className="search-section">  
+            <div className="search-section"> 
+            <SearchForm search={search} items={items}/>
             </div>
             {filteredData.map(item => {
-                    return <MediaCard key={item.id} item={item} />
+                    return <MediaCard key={item.id} item={item}/>
             })}
-            <Logout/>
         </section>
     );
 }
