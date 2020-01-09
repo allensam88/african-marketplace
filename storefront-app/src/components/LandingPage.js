@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import ItemCard from "./ItemCard";
+import MediaCard from "./ItemCard";
 import axiosWithAuth from '../utils/axiosWithAuth';
 import SearchForm from './Search';
 import { Link } from 'react-router-dom';
-import Logout from './Logout';
 
 const axios = axiosWithAuth();
 
@@ -26,13 +25,12 @@ export default function ItemList() {
 
     return(
         <section className="item-list">
-            <div className="nav-section">
-                <h1>buy items</h1>
+            <div className="search-section">  
             </div>
-            <Logout/>
-            {filteredData.map(char => {
-                    return <ItemCard key={char.id} item={char} />
+            {filteredData.map(item => {
+                    return <MediaCard key={item.id} item={item} />
             })}
+            <Logout/>
         </section>
     );
 }
