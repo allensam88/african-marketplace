@@ -33,20 +33,21 @@ const UserPage = (props) => {
                     alt="user-img"
                 />
                 <p>{profile.username}</p>
-                <button onClick={() => props.history.push(`/postItems`)}>Add item</button>
-                <button onClick={() => props.history.push(`/users/${id}`)}>Edit User</button>
+                <button className="edit-buttons" onClick={() => props.history.push(`/postItems`)}>Add item</button>
+                <button className="edit-buttons" onClick={() => props.history.push(`/users/${id}`)}>Edit User</button>
                 <div className="user-item-wrapper">
                     {profile.items.map(item => {
                         return (
                             <div className="user-item">
+                                <img src={item.itemImg} className="user-profile-item-img" />
                                 <ul>
-                                    <li><h2>{item.name}</h2></li>
-                                    <li>Description: {item.description}</li>
-                                    <li>${item.price}</li>
-                                    <li>Category: {item.category}</li>
-                                    <li>Location: {item.location}</li>
+                                    <li><h2 className="item-title">{item.name}</h2></li>
+                                    <li className="price-li">${item.price}</li>
+                                    <li className="align-left"><h3 className="subtitle">Description:</h3> {item.description}</li>
+                                    <li className="align-left"><h3 className="subtitle">Category:</h3> {item.category}</li>
+                                    <li className="align-left"><h3 className="subtitle">Location:</h3> {item.location}</li>
                                 </ul>
-                                <button onClick={() => props.history.push(`/`)}>Edit item</button>
+                                <button className="edit-buttons" onClick={() => props.history.push(`/`)}>Edit item</button>
                             </div>
                         )
                     })}
