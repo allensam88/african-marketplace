@@ -29,7 +29,7 @@ const LoginForm = props => {
           }).then(function (response) {
             localStorage.setItem('token', response.data.token);
             localStorage.setItem('id', response.data.id);
-            history.push("/item");
+            history.push(`/`);
           }).catch(function (error) {
             console.log(error);
           });
