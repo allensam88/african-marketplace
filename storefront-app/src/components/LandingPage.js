@@ -17,7 +17,6 @@ export default function ItemList() {
     useEffect(() => {
         axios.get("https://african-marketplace-1.herokuapp.com/api/items")
         .then(response => {
-            console.log(response.data);
             updateData(response.data);
             setFilteredData(response.data);
         });

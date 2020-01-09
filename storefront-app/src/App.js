@@ -1,5 +1,6 @@
 import React from 'react';
 import { Route, Switch, Redirect } from "react-router-dom";
+import UserIdContext from './contexts/UserIdContext';
 import EditUser from './components/EditUser';
 import PrivateRoute from './utils/PrivateRoute';
 import LoginForm from './components/Login';
@@ -13,8 +14,12 @@ import './App.css';
 
 
 function App() {
+
+  const userId = localStorage.getItem('id')
+
   return (
     <div id="App">
+      <UserIdContext.Provider value={{userId}}>
       <NavBar/>
       <Switch>
         <PrivateRoute path="/userprofile/:id" component={UserPage} />
@@ -26,6 +31,7 @@ function App() {
         <Route path="/MarketPlace" component={MarketPlace} />
         <Redirect to="/login" component={LoginForm} />
       </Switch>
+      </UserIdContext.Provider>
     </div>
   );
 }
