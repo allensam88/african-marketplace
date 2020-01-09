@@ -5,22 +5,30 @@ import axiosWithAuth from '../utils/axiosWithAuth';
 const axios = axiosWithAuth();
 
 export default function ItemList() {
-    const [filteredData, updateData] = useState([]);
+    const [items, updateData] = useState([]);
+    const [filteredData, setFilteredData] = useState([]);
+
+    const search = charArr => {
+        console.warn(charArr, 'charArr update');
+        setFilteredData(charArr)
+    };
 
     useEffect(() => {
         axios.get("https://african-marketplace-1.herokuapp.com/api/items")
         .then(response => {
             console.log(response.data);
             updateData(response.data);
+            setFilteredData(response.data);
         });
     }, []);
 
     return(
         <section className="item-list">
-            <div className="search-section">  
+            <div className="search-section"> 
+            <SearchForm search={search} items={items}/>
             </div>
             {filteredData.map(item => {
-                    return <MediaCard key={item.id} item={item} />
+                    return <MediaCard key={item.id} item={item}/>
             })}
         </section>
     );
