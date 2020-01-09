@@ -229,3 +229,8 @@ li {
   justify-content: center;
   margin: 1%;
 }
+
+.error-message {
+  color: red;
+  font-size: 10px;
+}
