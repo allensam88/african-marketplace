@@ -15,13 +15,15 @@ height: 6rem;
 width: 100%;
 `
 
-const NavBar = () => {
+const NavBar = (props) => {
 
     const { userId } = useContext(UserIdContext);
 
+    console.log(props)
+
     return (
         <NavBarStyles>
-            <div className="marketplace-logo"> <img className="marketplace-logo" alt="logo" src={require('./marketplace.png')} /></div>
+            <Link to="/"><div className="marketplace-logo"> <img className="marketplace-logo" alt="logo" src={require('./marketplace.png')} /></div></Link>
 
             <ul className="nav-links">
                 <li>
