@@ -21,7 +21,7 @@ const NavBar = () => {
 
             <ul className="nav-links">
                 <li>
-                <Link to="/auth/items" className="links">
+                <Link to="/" className="links">
                     Marketplace
                 </Link>
                 </li>
@@ -29,6 +29,16 @@ const NavBar = () => {
                 <Link to="" className="links">
                     Profile
                 </Link>
+                </li>
+                <li>
+                    <Link to="/login" className="links">
+                        Login
+                    </Link>
+                </li>
+                <li>
+                    <Link to="/register" className="links">
+                        Register
+                    </Link>
                 </li>
                 <li>
                     <Logout/>
