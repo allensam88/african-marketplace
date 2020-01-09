@@ -1,80 +1,91 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axiosWithAuth from '../utils/axiosWithAuth';
+import UserIdContext from '../contexts/UserIdContext';
 
 const PostItems = props => {
-  const [user, setUser] = useState({
-    name: "",
-    description: "",
-    price: "",
-    category: "",
-    location: "",
-    user_id: `${localStorage.getItem('id')}`
-  });
+
+  const { userId } = useContext(UserIdContext);
+
+  const [item, setItem] = useState({});
 
   const handleChange = event => {
-    setUser({
-      ...user,
+    setItem({
+      ...item,
       [event.target.name]: event.target.value,
     });
   };
 
-  console.log("user", user)
+  console.log("item", item)
 
-  const handleSubmit = event => {
-    event.preventDefault();
+
+  function submitForm(e){ 
+    e.preventDefault();
+    const newItem = {
+      name: item.name,
+      description: item.description,
+      price: item.price,
+      category: item.category,
+      location: item.location, 
+      itemImg: item.itemImg,
+      user_id: `${userId}`
+    }
+
     axiosWithAuth()
-      .post('/items', user)
+      .post('/items', newItem)
       .then(response => {
         console.log("response", response)
-        props.history.push(`/MarketPlace/${response.data.id}`)
+        props.history.push(`/userprofile/${response.data.id}`)
       })
       .catch(err => console.log(err))
+      console.log('works')
   }
+   
+
   return (
     <div>
       <h1>Welcome to the African Market App!</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={submitForm} className="form">
         <label>Name</label>
-        <input
+        <input  className="border"
           type="text"
           name="name"
           placeholder="Name"
-          value={user.name}
+          value={item.name}
           onChange={handleChange}
         />
         <label>Descripition</label>
-        <input
+        <input className="border"
           type="text"
           name="description"
           placeholder="Description"
-          value={user.description}
+          value={item.description}
           onChange={handleChange}
         />
         <label>Price</label>
-        <input
+        <input className="border"
           type="text"
           name="price"
           placeholder="Price"
-          value={user.price}
+          value={item.price}
           onChange={handleChange}
         />
         <label>Category</label>
-        <input
+        <input className="border"
           type="text"
           name="category"
           placeholder="Category"
-          value={user.category}
+          value={item.category}
           onChange={handleChange}
         />
         <label>Location</label>
-        <input
+        <input className="border"
           type="text"
           name="location"
           placeholder="Location"
-          value={user.location}
+          value={item.location}
           onChange={handleChange}
         />
-        <button type="submit">Add</button>
+        <button type="submit" className="add-btn">Add</button>
       </form>
     </div>
   );

@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import MediaCard from "./ItemCard";
 import axiosWithAuth from '../utils/axiosWithAuth';
-import SearchForm from './Search';
-import { Link } from 'react-router-dom';
+import SearchForm from './Search.js';
 
 const axios = axiosWithAuth();
 
@@ -18,7 +17,6 @@ export default function ItemList() {
     useEffect(() => {
         axios.get("https://african-marketplace-1.herokuapp.com/api/items")
         .then(response => {
-            console.log(response.data);
             updateData(response.data);
             setFilteredData(response.data);
         });
