@@ -8,7 +8,7 @@ const axiosWithAuth = () => {
     'Content-Type': 'application/json',
      'authorization': `${token}`
     }
-  });
-};
+  })
+}
 
 export default axiosWithAuth;
