@@ -41,19 +41,21 @@ const EditUser = (props) => {
     }
 
     return (<>
-        <h2>Edit Username</h2>
+        <h2 className="item-title">Edit Username</h2>
         <p>Current username: {user.username}</p>
         <form onSubmit={submitForm}>
             <input
                 placeholder="Username"
                 name="username"
                 value={user.username}
-                onChange={changeHandler} />
-            <button type="submit">
+                onChange={changeHandler}
+                className="edit-username-input" />
+                <br />
+            <button className="edit-user-buttons" type="submit">
                 Submit
             </button>
-            <button onClick={deleteUser} type="button">
-                Delete
+            <button className="edit-user-buttons" onClick={deleteUser} type="button">
+                Delete Account
             </button>
         </form>
     </>)
