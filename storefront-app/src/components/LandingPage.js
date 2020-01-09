@@ -31,7 +31,7 @@ export default function ItemList() {
             </div>
             <Logout/>
             {filteredData.map(char => {
-                    return <ItemCard key={items.name} item={items} />
+                    return <ItemCard key={char.id} item={char} />
             })}
         </section>
     );

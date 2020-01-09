@@ -20,7 +20,6 @@ const LoginForm = props => {
             ...user,
             [event.target.name]: event.target.value
         });
-        console.log(event.target.value);
     };
     const submitForm = event => {
         event.preventDefault()
@@ -28,9 +27,9 @@ const LoginForm = props => {
             username: user.username,
             password: user.password
           }).then(function (response) {
-            localStorage.setItem('auth-token', response.data.token);
-            console.log(response.data.token);
-            history.push("/items");
+            localStorage.setItem('token', response.data.token);
+            localStorage.setItem('id', response.data.id);
+            history.push("/item");
           }).catch(function (error) {
             console.log(error);
           });
@@ -58,7 +57,7 @@ const LoginForm = props => {
                         value={user.password}/>
                 </fieldset>
                 <StyledButton type="submit">Login</StyledButton>
-                <Link className="form-button" to="/auth/register">
+                <Link className="form-button" to="/register">
                     <StyledButton renderas="button">
                         Need an account?
                     </StyledButton>
