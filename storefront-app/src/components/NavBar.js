@@ -26,7 +26,7 @@ const NavBar = () => {
                 </Link>
                 </li>
                 <li>
-                <Link to="" className="links">
+                <Link to={`/userprofile/${localStorage.getItem('id')}`} className="links">
                     Profile
                 </Link>
                 </li>

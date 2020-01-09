@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import MediaCard from "./ItemCard";
 import axiosWithAuth from '../utils/axiosWithAuth';
+import SearchForm from './Search.js';
 
 const axios = axiosWithAuth();
 
