@@ -43,49 +43,57 @@ const PostItems = props => {
 
   return (
     <div>
-      <h1>Welcome to the African Market App!</h1>
-      <form onSubmit={submitForm} className="form">
+      <form onSubmit={submitForm} className="post-item-form">
+        <h2 className="item-title">Add an Item</h2>
         <label>Name</label>
-        <input  className="border"
+        <input  className="post-item-input"
           type="text"
           name="name"
           placeholder="Name"
           value={item.name}
           onChange={handleChange}
-        />
+        /> <br />
         <label>Descripition</label>
-        <input className="border"
+        <input className="post-item-input"
           type="text"
           name="description"
           placeholder="Description"
           value={item.description}
           onChange={handleChange}
-        />
+        /> <br />
         <label>Price</label>
-        <input className="border"
+        <input className="post-item-input"
           type="text"
           name="price"
           placeholder="Price"
           value={item.price}
           onChange={handleChange}
-        />
+        /> <br />
         <label>Category</label>
-        <input className="border"
+        <input className="post-item-input"
           type="text"
           name="category"
           placeholder="Category"
           value={item.category}
           onChange={handleChange}
-        />
+        /> <br />
         <label>Location</label>
-        <input className="border"
+        <input className="post-item-input"
           type="text"
           name="location"
           placeholder="Location"
           value={item.location}
           onChange={handleChange}
-        />
-        <button type="submit" className="add-btn">Add</button>
+        /> <br />
+        <label>Image URL</label>
+        <input className="post-item-input"
+          type="text"
+          name="itemImg"
+          placeholder="Image URL"
+          value={item.itemImg}
+          onChange={handleChange}
+        /> <br />
+        <button type="submit" className="edit-user-buttons">Add</button>
       </form>
     </div>
   );
