@@ -13,7 +13,6 @@ const EditUser = (props) => {
         axiosWithAuth()
             .get(`/users/${props.match.params.id}`)
             .then(res => {
-                console.log("user", user)
                 return setUser(res.data)
             })
     }
@@ -34,11 +33,11 @@ const EditUser = (props) => {
         e.preventDefault();
         axiosWithAuth()
             .put(`/users/${props.match.params.id}`, user)
+            .then(props.history.push(`/userprofile/${props.match.params.id}`));
     }
 
     const deleteUser = (e) => {
         e.preventDefault();
-        console.log("deleted");
         axiosWithAuth()
         .delete(`/users/${props.match.params.id}`);
         props.history.push('/login');

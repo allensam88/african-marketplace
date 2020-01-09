@@ -13,7 +13,6 @@ const UserPage = (props) => {
         axiosWithAuth()
             .get(`/users/${id}/items`)
             .then(res => {
-                console.log(res.data);
                 return setProfile(res.data)
             })
     }
