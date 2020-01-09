@@ -328,6 +328,14 @@ li {
 .user-item-wrapper {
   display: flex;
   justify-content: center;
+  margin: 1%;
+}
+
+.error-message {
+  color: red;
+  font-size: 10px;
+}
+
   flex-wrap: wrap;
   margin: 1% auto;
   max-width: 900px;
@@ -426,3 +434,4 @@ li {
 }
 
 /* End of Allie's postItems css */
+

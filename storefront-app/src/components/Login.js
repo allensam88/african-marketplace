@@ -20,7 +20,22 @@ const LoginForm = props => {
             ...user,
             [event.target.name]: event.target.value
         });
+
     };
+
+    const [error, setError] = useState("");
+    const checkOnBlur = event => {
+        if (event.target.value.length === 0) {
+          setError("You need a username");
+        } else {
+          setError("");
+        }
+    }
+
+    const emptyOnFocus = event => {
+        setError("");
+}
+
     const submitForm = event => {
         event.preventDefault()
         axios.post('https://african-marketplace-1.herokuapp.com/api/login', {
@@ -47,7 +62,10 @@ const LoginForm = props => {
                         name="username"
                         placeholder="Enter Username"
                         onChange={handleChanges}
+                        onBlur={checkOnBlur}
+                        onFocus={emptyOnFocus}
                         value={user.username}/>
+                        <p className="error-message">{error}</p>
                         <label className="login-label"  htmlFor = "password">Password</label>
                         <input className="login-input" id="password"
                         type="password"
