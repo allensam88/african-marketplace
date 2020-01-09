@@ -11,7 +11,6 @@ import React, { useState } from "react";
       const filter = props.items.filter(item => {
         return item.name.indexOf(searchQuery) !== -1;
       });
-      console.log({ filter, searchQuery, items: props.items });
      props.search(filter);
     };
    
