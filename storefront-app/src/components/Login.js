@@ -38,7 +38,7 @@ const LoginForm = props => {
     return(
         <AuthContainer>
             <form className="login-form" onSubmit={submitForm}>
-                <img className="logo" src={require('./logo.png')} />
+                <img className="logo" alt="logo" src={require('./logo.png')} />
                 <fieldset>
                 <legend>Login</legend>
                         <label className="login-label" htmlFor = "username">Username</label>
