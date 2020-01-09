@@ -32,11 +32,17 @@ export default function MediaCard(props) {
           <Typography variant="body2" color="textSecondary" component="p">
             {props.item.description}
           </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            <p>Price: ${props.item.price}</p>
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            <p>Location: {props.item.location}</p>
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            <p>Owner: {props.item.owner}</p>
+          </Typography>
         </CardContent>
       </CardActionArea>
-      <CardActions>
-        <p>Price: {props.item.price} Location: {props.item.location} Owner: {props.item.owner}</p>
-      </CardActions>
     </Card>
   );
 }

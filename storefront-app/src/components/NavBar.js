@@ -30,7 +30,9 @@ const NavBar = () => {
                 </Link>
                 </li>
                 <li>
+
                 <Link to={`/userprofile/${userId}`} className="links">
+
                     Profile
                 </Link>
                 </li>
