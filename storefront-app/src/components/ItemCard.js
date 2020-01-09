@@ -37,9 +37,7 @@ export default function MediaCard(props) {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
+        <p>Price: {props.item.price} Location: {props.item.location} Owner: {props.item.owner}</p>
       </CardActions>
     </Card>
   );

@@ -3,7 +3,6 @@ import MediaCard from "./ItemCard";
 import axiosWithAuth from '../utils/axiosWithAuth';
 import SearchForm from './Search';
 import { Link } from 'react-router-dom';
-import Logout from './Logout';
 
 const axios = axiosWithAuth();
 
@@ -26,8 +25,7 @@ export default function ItemList() {
 
     return(
         <section className="item-list">
-            <div className="nav-section">
-                <Logout/>
+            <div className="search-section">  
             </div>
             {filteredData.map(item => {
                     return <MediaCard key={items.name} item={item} />

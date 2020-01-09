@@ -6,11 +6,13 @@ import AuthRoute from './utils/AuthRoute';
 import LoginForm from './components/Login';
 import RegisterForm from './components/Register';
 import ItemList from './components/LandingPage';
+import NavBar from './components/NavBar';
 import './App.css';
 
 function App() {
   return (
     <div id="App">
+      <NavBar/>
       <Switch>
         <AuthRoute path="/auth" component={() => (
           <Switch>
