@@ -336,11 +336,11 @@ li {
   font-size: 10px;
 }
 
-  flex-wrap: wrap;
+  /* flex-wrap: wrap;
   margin: 1% auto;
   max-width: 900px;
   width: 90%;
-}
+} */
 
 .user-profile-item-img {
   max-width: 100%;
