@@ -22,7 +22,7 @@ function App() {
       <UserIdContext.Provider value={{userId}}>
       <NavBar />
       <Switch>
-        <PrivateRoute path="/userprofile/:id" component={UserPage} />
+        <PrivateRoute path="/userprofile" component={UserPage} />
         <PrivateRoute path="/users/:id" component={EditUser} /> 
         <Route exact path="/" component={ItemList} />
         <Route exact path="/login" component={LoginForm} />
