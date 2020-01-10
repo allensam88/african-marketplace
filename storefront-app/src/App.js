@@ -20,7 +20,7 @@ function App() {
   return (
     <div id="App">
       <UserIdContext.Provider value={{userId}}>
-      <NavBar/>
+      <NavBar />
       <Switch>
         <PrivateRoute path="/userprofile/:id" component={UserPage} />
         <PrivateRoute path="/users/:id" component={EditUser} /> 
@@ -28,7 +28,6 @@ function App() {
         <Route exact path="/login" component={LoginForm} />
         <Route exact path="/register" component={RegisterForm} />
         <Route path="/postItems" component={PostItems} />
-        <Route path="/MarketPlace" component={MarketPlace} />
         <Redirect to="/login" component={LoginForm} />
       </Switch>
       </UserIdContext.Provider>
