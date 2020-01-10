@@ -5,13 +5,16 @@ const EditUser = (props) => {
 
     const [user, setUser] = useState({
         id: '',
-        username: ''
+        username: '',
+        profileImg: ''
     })
 
     const getUser = () => {
         axiosWithAuth()
             .get(`/users/${props.match.params.id}`)
-            .then(res => setUser(res.data))
+            .then(res => {
+                return setUser(res.data)
+            })
     }
 
     useEffect(() => {
@@ -22,7 +25,7 @@ const EditUser = (props) => {
     const changeHandler = (e) => {
         setUser({
             ...user,
-            username: e.target.value
+            [e.target.name]: e.target.value
         })
     }
 
@@ -30,30 +33,38 @@ const EditUser = (props) => {
         e.preventDefault();
         axiosWithAuth()
             .put(`/users/${props.match.params.id}`, user)
+            .then(props.history.push(`/userprofile/${props.match.params.id}`));
     }
 
     const deleteUser = (e) => {
         e.preventDefault();
-        console.log("deleted");
         axiosWithAuth()
         .delete(`/users/${props.match.params.id}`);
         props.history.push('/login');
     }
 
     return (<>
-        <h2>Edit Username</h2>
+        <h2 className="item-title">Edit Username</h2>
         <p>Current username: {user.username}</p>
         <form onSubmit={submitForm}>
             <input
                 placeholder="Username"
                 name="username"
                 value={user.username}
-                onChange={changeHandler} />
-            <button type="submit">
+                onChange={changeHandler}
+                className="edit-username-input" />
+            <input
+                placeholder="Image URL"
+                name="profileImg"
+                value={user.profileImg}
+                onChange={changeHandler}
+                className="edit-username-input" />
+                <br />
+            <button className="edit-user-buttons" type="submit">
                 Submit
             </button>
-            <button onClick={deleteUser} type="button">
-                Delete
+            <button className="edit-user-buttons" onClick={deleteUser} type="button">
+                Delete Account
             </button>
         </form>
     </>)
