@@ -158,7 +158,7 @@ legend {
   width: 100%;
 }
 
-.makeStyles-card-1{
+.MuiPaper-root {
   margin: 2rem;
   width: 30rem;
   height: 27rem;
