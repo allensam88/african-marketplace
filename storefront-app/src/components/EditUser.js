@@ -44,7 +44,7 @@ const EditUser = (props) => {
     }
 
     return (<>
-        <h2 className="item-title">Edit Username</h2>
+        <h2 className="item-title">Edit User</h2>
         <p>Current username: {user.username}</p>
         <form onSubmit={submitForm}>
             <input
