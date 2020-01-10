@@ -15,9 +15,6 @@ const PostItems = props => {
     });
   };
 
-  console.log("item", item)
-
-
   function submitForm(e){ 
     e.preventDefault();
     const newItem = {
@@ -33,11 +30,9 @@ const PostItems = props => {
     axiosWithAuth()
       .post('/items', newItem)
       .then(response => {
-        console.log("response", response)
         props.history.push(`/userprofile/${response.data.id}`)
       })
       .catch(err => console.log(err))
-      console.log('works')
   }
    
 
