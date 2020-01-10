@@ -32,6 +32,11 @@ const NavBar = (props) => {
                 </Link>
                 </li>
                 <li>
+                <a href="https://marketplace2.netlify.com/" className="links">
+                    About
+                </a>
+                </li>
+                <li>
 
                 <Link to={`/userprofile/${userId}`} className="links">
 
