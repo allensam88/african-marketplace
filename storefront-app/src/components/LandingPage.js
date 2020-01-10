@@ -25,7 +25,7 @@ export default function ItemList() {
     return(
         <section className="item-list">
             <div className="search-section">
-                <h1 className="marketplace-header">Marketplace</h1>
+                <h1 className="marketplace-header">Marketplace test</h1>
             <SearchForm search={search} items={items}/>
             </div>
             {filteredData.map(item => {
