@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axiosWithAuth from '../utils/axiosWithAuth';
 import CardItem from './CardItem';
-import EditCard from './EditCard';
+// import EditCard from './EditCard';
 import { Route } from 'react-router-dom';
 
 const ItemList = () => {
@@ -50,9 +50,9 @@ const ItemList = () => {
 				{items.map(item => (
 					<CardItem item={item} editItems={editItems} deleteItem={deleteItem} saveEdit={saveEdit} />))}
 			</div>
-			<Route to="/editcard" />
+			{/* <Route to="/editcard" />
 			<EditCard setItemToEdit={setItemToEdit} editItem={editItem} itemToEdit={itemToEdit} saveEdit={saveEdit} setItems={setItems} />
-			<div />
+			<div /> */}
 		</div>
 	);
 };
