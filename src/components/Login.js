@@ -38,16 +38,17 @@ const LoginForm = props => {
 
 	const submitForm = event => {
 		event.preventDefault()
-		axios.post('https://african-marketplace-server.herokuapp.com/api/login', {
-			username: user.username,
-			password: user.password
-		}).then(function (response) {
-			localStorage.setItem('token', response.data.token);
-			localStorage.setItem('id', response.data.id);
-			history.push(`/`);
-		}).catch(function (error) {
-			console.log(error);
-		});
+		axiosWithAuth()
+			.post('/api/login', {
+				username: user.username,
+				password: user.password
+			}).then(function (response) {
+				localStorage.setItem('token', response.data.token);
+				localStorage.setItem('id', response.data.id);
+				history.push(`/`);
+			}).catch(function (error) {
+				console.log(error);
+			});
 	};
 
 	return (

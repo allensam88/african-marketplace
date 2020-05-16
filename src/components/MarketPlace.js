@@ -17,7 +17,7 @@ const ItemList = () => {
 
 	useEffect(() => {
 		axiosWithAuth()
-			.get('https://african-marketplace-server.herokuapp.com/api/items')
+			.get('/api/items')
 			.then(response => setItems(response.data))
 			.catch(error => console.log("GET request Failed", error));
 	}, []);

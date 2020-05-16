@@ -23,10 +23,11 @@ const RegisterForm = props => {
 	};
 	const submitForm = event => {
 		event.preventDefault()
-		axios.post('https://african-marketplace-server.herokuapp.com/api/register', {
-			username: user.username,
-			password: user.password
-		})
+		axiosWithAuth()
+			.post('/api/register', {
+				username: user.username,
+				password: user.password
+			})
 			.then(function (response) {
 				history.push("/auth/login");
 			})

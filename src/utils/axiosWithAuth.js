@@ -2,13 +2,24 @@ import axios from 'axios';
 
 const axiosWithAuth = () => {
 	const token = localStorage.getItem('token');
+
 	return axios.create({
-		baseURL: 'https://african-marketplace-server.herokuapp.com/',
+		baseURL: (function () {
+			switch (process.env.REACT_APP_ENV) {
+				case "development":
+					return process.env.REACT_APP_LOCAL_HOST;
+				case "production":
+					return process.env.REACT_APP_PRODUCTION_URL;
+				default:
+					return process.env.REACT_APP_LOCAL_HOST;
+			}
+		})(),
 		headers: {
-			'Content-Type': 'application/json',
-			'authorization': `${token}`
-		}
-	})
-}
+			// "Authorization": token,
+			"Authorization": token,
+			"Content-Type": "application/json",
+		},
+	});
+};
 
 export default axiosWithAuth;
