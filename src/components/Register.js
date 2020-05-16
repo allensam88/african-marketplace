@@ -5,8 +5,6 @@ import { useHistory } from "react-router-dom";
 import StyledButton from "./Button";
 import AuthContainer from "./AuthContainer";
 
-const axios = axiosWithAuth();
-
 const RegisterForm = props => {
 	let history = useHistory();
 

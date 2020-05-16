@@ -15,7 +15,6 @@ const axiosWithAuth = () => {
 			}
 		})(),
 		headers: {
-			// "Authorization": token,
 			"Authorization": token,
 			"Content-Type": "application/json",
 		},
