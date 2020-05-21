@@ -17,48 +17,48 @@ width: 100%;
 
 const NavBar = (props) => {
 
-    const { userId } = useContext(UserIdContext);
+	const { userId } = useContext(UserIdContext);
 
-    console.log(props)
+	console.log(props)
 
-    return (
-        <NavBarStyles>
-            <Link to="/"><div className="marketplace-logo"> <img className="marketplace-logo" alt="logo" src={require('./marketplace.png')} /></div></Link>
+	return (
+		<NavBarStyles>
+			<Link to="/"><div className="marketplace-logo"> <img className="marketplace-logo" alt="logo" src={require('./marketplace.png')} /></div></Link>
 
-            <ul className="nav-links">
-                <li>
-                <Link to="/" className="links">
-                    Marketplace
+			<ul className="nav-links">
+				<li>
+					<Link to="/" className="links">
+						Marketplace
                 </Link>
-                </li>
-                <li>
-                <a href="https://marketplace2.netlify.com/" className="links">
-                    About
+				</li>
+				<li>
+					<a href="https://marketplace2.netlify.com/" className="links">
+						About
                 </a>
-                </li>
-                <li>
+				</li>
+				<li>
 
-                <Link to={`/userprofile/${userId}`} className="links">
+					<Link to={`/userprofile/${userId}`} className="links">
 
-                    Profile
+						Profile
                 </Link>
-                </li>
-                <li>
-                    <Link to="/login" className="links">
-                        Login
+				</li>
+				<li>
+					<Link to="/" className="links">
+						Login
                     </Link>
-                </li>
-                <li>
-                    <Link to="/register" className="links">
-                        Register
+				</li>
+				<li>
+					<Link to="/register" className="links">
+						Register
                     </Link>
-                </li>
-                <li>
-                    <Logout/>
-                </li>
-            </ul>
-        </NavBarStyles>
-    )
+				</li>
+				<li>
+					<Logout />
+				</li>
+			</ul>
+		</NavBarStyles>
+	)
 }
 
 export default NavBar;
