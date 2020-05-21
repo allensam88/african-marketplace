@@ -27,14 +27,9 @@ const NavBar = (props) => {
 
 			<ul className="nav-links">
 				<li>
-					<Link to="/" className="links">
+					<Link to="/items" className="links">
 						Marketplace
                 </Link>
-				</li>
-				<li>
-					<a href="https://marketplace2.netlify.com/" className="links">
-						About
-                </a>
 				</li>
 				<li>
 
@@ -42,16 +37,6 @@ const NavBar = (props) => {
 
 						Profile
                 </Link>
-				</li>
-				<li>
-					<Link to="/" className="links">
-						Login
-                    </Link>
-				</li>
-				<li>
-					<Link to="/register" className="links">
-						Register
-                    </Link>
 				</li>
 				<li>
 					<Logout />

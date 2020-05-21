@@ -11,7 +11,7 @@ const EditUser = (props) => {
 
 	const getUser = () => {
 		axiosWithAuth()
-			.get(`/users/${props.match.params.id}`)
+			.get(`/api/users/${props.match.params.id}`)
 			.then(res => {
 				return setUser(res.data)
 			})
@@ -32,14 +32,14 @@ const EditUser = (props) => {
 	const submitForm = (e) => {
 		e.preventDefault();
 		axiosWithAuth()
-			.put(`/users/${props.match.params.id}`, user)
+			.put(`/api/users/${props.match.params.id}`, user)
 			.then(props.history.push(`/userprofile/${props.match.params.id}`));
 	}
 
 	const deleteUser = (e) => {
 		e.preventDefault();
 		axiosWithAuth()
-			.delete(`/users/${props.match.params.id}`);
+			.delete(`/api/users/${props.match.params.id}`);
 		props.history.push('/');
 	}
 

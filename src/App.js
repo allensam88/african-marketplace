@@ -19,16 +19,16 @@ function App() {
 
 	return (
 		<div id="App">
+			<Route exact path="/" component={LoginForm} />
+			<Redirect to="/" component={LoginForm} />
+			<Route path="/register" component={RegisterForm} />
 			<UserIdContext.Provider value={{ userId }}>
 				<NavBar />
 				<Switch>
 					<PrivateRoute path="/userprofile" component={UserPage} />
 					<PrivateRoute path="/users/:id" component={EditUser} />
-					<Route exact path="/items" component={ItemList} />
-					<Route exact path="/" component={LoginForm} />
-					<Route exact path="/register" component={RegisterForm} />
+					<PrivateRoute path="/items" component={ItemList} />
 					<Route path="/postItems" component={PostItems} />
-					<Redirect to="/" component={LoginForm} />
 				</Switch>
 			</UserIdContext.Provider>
 		</div>

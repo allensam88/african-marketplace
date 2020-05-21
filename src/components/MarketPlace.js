@@ -25,7 +25,7 @@ const ItemList = () => {
 	const saveEdit = id => {
 		// id.preventDefault();
 		axiosWithAuth()
-			.put(`/items/${id}`, itemToEdit)
+			.put(`/api/items/${id}`, itemToEdit)
 			.then(response => {
 				setEditItem(false);
 			})
@@ -33,9 +33,8 @@ const ItemList = () => {
 	};
 
 	const deleteItem = id => {
-		console.log("delete", id);
-		axiosWithAuth('helper')
-			.delete(`/items/${id}`)
+		axiosWithAuth()
+			.delete(`/api/items/${id}`)
 			.then(response => {
 				editItem(items.filter(item => item.id !== response.data));
 			})

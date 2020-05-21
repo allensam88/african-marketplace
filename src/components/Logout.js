@@ -18,7 +18,7 @@ class Logout extends Component {
 		if (navigate) {
 			return <Redirect to="/" push={true} />;
 		}
-		return <Button className="log-out" onClick={this.logout}>Log Out </Button>
+		return <Button className="log-out" onClick={this.logout}>Log Out</Button>
 	}
 }
 
