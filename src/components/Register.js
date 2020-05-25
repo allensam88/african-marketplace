@@ -27,7 +27,7 @@ const RegisterForm = props => {
 				password: user.password
 			})
 			.then(function (response) {
-				history.push("/auth/login");
+				history.push("/");
 			})
 			.catch(function (error) {
 				console.log(error);
